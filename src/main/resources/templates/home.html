@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body min-height="100%">
+<header th:insert="blocks/header :: header"></header>
+<div class="container-fluid d-flex align-items-center justify-content-center">
+    <main role="main" class="inner cover">
+        <h1 class="text-center">Пищевой дневник</h1>
+        <p class="text-center">Для отслеживания привычек пищевого поведения, контроля аллергии и атопического дерматита.</p>
+        <p class="text-center">
+            <a href="/journal" class="btn btn-lg btn-primary">Перейти к дневнику</a>
+        </p>
+    </main>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование записи</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+
+    <h1>Редактирование записи</h1><br>
+    <div th:each="field : ${record}">
+        <form method="post">
+            <input type="datetime-local" th:value="${field.dateTime}" name="dateTime"  class="form-control"><br>
+            <input type="text" th:value="${field.products}" name="products" placeholder="Продукты" class="form-control"><br>
+            <input type="text" th:value="${field.symptoms}" name="symptoms" placeholder="Сиптомы" class="form-control"><br>
+            <input type="text" th:value="${field.medicines}" name="medicines" placeholder="Медикаменты" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Редактировать запись</button>
+        </form>
+    </div>
+
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

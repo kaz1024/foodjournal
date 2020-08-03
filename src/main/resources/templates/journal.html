@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Дневник</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div th:switch="${records}" class="container">
+    <h2 th:case="null">Нет записей!</h2>
+    <div th:case="*">
+        <h1 class="text-center">Дневник</h1><br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Дата</th>
+                <th scope="col">Продукты</th>
+                <th scope="col">Симптомы</th>
+                <th scope="col">Медикаменты</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="field : ${records}">
+                <td th:text="${field.dateTime}"></td>
+                <td th:text="${field.products}"></td>
+                <td th:text="${field.symptoms}"></td>
+                <td th:text="${field.medicines}"></td>
+                <td><a th:href="'/journal/' +  ${field.id} + '/edit'   " class="btn btn-warning">Редактировать</a></td>
+                <td>
+                    <form th:action="'/journal/' + ${field.id} + '/delete'" method="post">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
